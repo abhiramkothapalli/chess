@@ -12,7 +12,6 @@ const fen_prefix = "position fen "
 skill_level = 0
 depth = 1
 
-
 function receive(data) {
     
     data_array = data.split("\n");
@@ -66,10 +65,13 @@ function process_player(m) {
 }
 
 function process_undo(){
-    remove_all_color();
-    chess.undo();
-    chess.undo();
-    push_state();
+
+    if(chess.turn() == 'w'){
+	remove_all_color();
+	chess.undo();
+	chess.undo();
+	push_state();
+    }
 }
 
 
